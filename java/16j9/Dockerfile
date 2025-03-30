@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-16-jdk
+FROM        --platform=$TARGETOS/$TARGETARCH adoptopenjdk/openjdk16
 
 LABEL       author="KrArjan" maintainer="krarjanofficial@gmail.com"
 
