@@ -9,7 +9,7 @@ export INTERNAL_IP
 # Hibernate Plugin Data
 PLUGIN_PATH="/home/container/plugins"
 PLUGIN_NAME="DO-NOT-REMOVE.jar"
-PLUGIN_URL="https://www.spigotmc.org/resources/hibernate.4441/download?version=506703"
+PLUGIN_URL="https://raw.githubusercontent.com/KrArjan/DockerImages/main/HibernatePlugins/Hibernate-2.1.0.jar"
 
 # Ensure the plugins directory exists
 mkdir -p "$PLUGIN_PATH"

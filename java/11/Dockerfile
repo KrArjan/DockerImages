@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-16-jdk
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:11.0.13_8-jdk-focal
 
 LABEL       author="KrArjan" maintainer="krarjanofficial@gmail.com"
 
@@ -10,5 +10,5 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY        ./../entrypoint.sh /entrypoint.sh
+COPY       ./../entrypoint.sh /entrypoint.sh
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
