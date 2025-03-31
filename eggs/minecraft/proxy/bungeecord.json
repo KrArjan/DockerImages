@@ -1,0 +1,56 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-03-31T18:03:21+05:30",
+    "name": "Bungeecord",
+    "author": "krarjanofficial@gmail.com",
+    "description": "Bungeecord Egg By KrArjan",
+    "features": null,
+    "docker_images": {
+        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21",
+        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
+        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
+        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
+        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
+    "config": {
+        "files": "{\r\n    \"config.yml\": {\r\n        \"parser\": \"yaml\",\r\n        \"find\": {\r\n            \"listeners[0].query_enabled\": true,\r\n            \"listeners[0].query_port\": \"{{server.build.default.port}}\",\r\n            \"listeners[0].host\": \"0.0.0.0:{{server.build.default.port}}\",\r\n            \"servers.*.address\": {\r\n                \"127.0.0.1\": \"{{config.docker.interface}}\",\r\n                \"localhost\": \"{{config.docker.interface}}\"\r\n            }\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Listening on \",\r\n    \"userInteraction\": [\r\n        \"Listening on \/0.0.0.0:{{server.build.default.port}}\"\r\n    ]\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"proxy.log.0\"\r\n}",
+        "stop": "end"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\n# Bungeecord Installation Script\n#\n# Server Files: \/mnt\/server\napk update\napk add curl\n\ncd \/mnt\/server\n\nif [ -z \"${BUNGEE_VERSION}\" ] || [ \"${BUNGEE_VERSION}\" == \"latest\" ]; then\n    BUNGEE_VERSION=\"lastStableBuild\"\nfi\n\ncurl -o ${SERVER_JARFILE} https:\/\/ci.md-5.net\/job\/BungeeCord\/${BUNGEE_VERSION}\/artifact\/bootstrap\/target\/BungeeCord.jar",
+            "container": "alpine:3.9",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Bungeecord Version",
+            "description": "The version of Bungeecord to download and use.",
+            "env_variable": "BUNGEE_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|alpha_num|between:1,6",
+            "field_type": "text"
+        },
+        {
+            "name": "Bungeecord Jar File",
+            "description": "The name of the Jarfile to use when running Bungeecord.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "bungeecord.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "field_type": "text"
+        }
+    ]
+}
