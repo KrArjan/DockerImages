@@ -102,10 +102,10 @@ ping-passthrough-interval: 3
 
 # Whether to forward player ping to the server. While enabling this will allow Bedrock players to have more accurate
 # ping, it may also cause players to time out more easily.
-forward-player-ping: false
+forward-player-ping: true
 
 # Maximum amount of players that can connect. This is only visual at this time and does not actually limit player count.
-max-players: 100
+max-players: 40
 
 # If debug messages should be sent through console
 debug-mode: false
@@ -128,7 +128,7 @@ disable-bedrock-scaffolding: false
 # disabled - the default/fallback, which doesn't apply this workaround
 # no-emotes - emotes will NOT be sent to other Bedrock clients and offhand will be swapped. This effectively disables all emotes from being seen.
 # emotes-and-offhand - emotes will be sent to Bedrock clients and offhand will be swapped
-emote-offhand-workaround: "disabled"
+emote-offhand-workaround: "emotes-and-offhand"
 
 # The default locale if we dont have the one the client requested. Uncomment to not use the default system language.
 # default-locale: en_us
@@ -157,7 +157,7 @@ add-non-bedrock-items: true
 # Bedrock prevents building and displaying blocks above Y127 in the Nether.
 # This config option works around that by changing the Nether dimension ID to the End ID. 
 # The main downside to this is that the entire Nether will have the same red fog rather than having different fog for each biome.
-above-bedrock-nether-building: false
+above-bedrock-nether-building: true
 
 # Force clients to load all resource packs if there are any.
 # If set to false, it allows the user to connect to the server even if they don't
@@ -187,7 +187,7 @@ metrics:
   # If metrics should be enabled
   enabled: true
   # UUID of server, don't change!
-  uuid: generateduuid
+  uuid: 9ad19689-f946-4a4f-ac24-7efd2e13c329
 
 # ADVANCED OPTIONS - DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING!
 
